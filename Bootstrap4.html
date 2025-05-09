@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code with Law | Meme Store </title>
+    <link rel="icon" type="image/png"
+        href="https://raw.githubusercontent.com/LawrenzPH/Portfolio/refs/heads/main/Image/icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --theme-color: #3B82F6;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .navbar-brand {
+            color: var(--theme-color) !important;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 32px;
+            margin-right: 8px;
+        }
+
+        .navbar .form-control {
+            background-color: white;
+            color: #212529;
+        }
+
+        .navbar .nav-link,
+        .navbar .text-white {
+            color: var(--theme-color) !important;
+            text-decoration: none !important;
+        }
+
+        .form-control::placeholder {
+            color: #6c757d;
+        }
+
+        .sidebar {
+            background-color: #ffffff;
+            border-right: 1px solid #dee2e6;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            transition: transform 0.2s;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .view-details {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(59, 130, 246, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover .view-details {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--theme-color);
+            border-color: var(--theme-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+
+        .page-link {
+            color: var(--theme-color);
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--theme-color);
+            border-color: var(--theme-color);
+        }
+
+        .form-check-label,
+        .form-check-input,
+        .list-unstyled li,
+        .page-link,
+        .btn {
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg px-4 py-2">
+        <a class="navbar-brand" href="#">
+            <img src="https://raw.githubusercontent.com/LawrenzPH/Portfolio/refs/heads/main/Image/icon.png" alt="Logo">
+            Code with Law
+        </a>
+        <div class="ms-auto d-flex align-items-center gap-3">
+            <input class="form-control form-control-sm" type="search" placeholder="Search memes..." />
+            <a href="#" class="text-white">🛒</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <aside class="col-md-3 sidebar p-3">
+                <h5>Categories</h5>
+                <ul class="list-unstyled">
+                    <li><input type="checkbox" class="form-check-input me-1" /> Dank Memes</li>
+                    <li><input type="checkbox" class="form-check-input me-1" /> Classic Memes</li>
+                    <li><input type="checkbox" class="form-check-input me-1" /> Animal Memes</li>
+                </ul>
+
+                <h5>Price</h5>
+                <div class="d-flex gap-2 mb-3">
+                    <input type="number" class="form-control form-control-sm" placeholder="Min" />
+                    <input type="number" class="form-control form-control-sm" placeholder="Max" />
+                </div>
+
+                <h5>Brands</h5>
+                <div>
+                    <input type="checkbox" class="form-check-input me-1" /> MemeHub <br />
+                    <input type="checkbox" class="form-check-input me-1" /> Malupiton <br />
+                    <input type="checkbox" class="form-check-input me-1" /> LaughCo <br />
+                    <input type="checkbox" class="form-check-input me-1" /> ViralVault
+
+                </div>
+            </aside>
+
+            <!-- Product Grid -->
+            <main class="col-md-9">
+                <div class="row g-4">
+                    <!-- Otid mga Product Cards-->
+                    <script>
+                        const memes = [
+                            { title: "Legendary Dogge", img: "https://i.imgflip.com/4t0m5.jpg" },
+                            { title: "Mslm n Bdng", img: "https://scontent.fmnl9-2.fna.fbcdn.net/v/t1.15752-9/494574784_3943213369329242_9205881462189010749_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHbzAmobAQqZxYOz5oqWuK7QVBlxHZnkwBBUGXEdmeTAGVwkGAy_lUScjV6YT3ZSVctkoRjpf21sJxE7fTdPrVN&_nc_ohc=qbJZQ5gbgEsQ7kNvwF5yH-Q&_nc_oc=Adl8yOGBwcAdyBrni1-n7zc5Hl4hQHHmVzctaEC1V_m_QdMNSC0_Gw3CCRPj3a5JTz4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl9-2.fna&oh=03_Q7cD2QFjFPp7CBNWTwPaIL0gI2kq1GJTtcvYf3iQAQ-APLTloQ&oe=68452608" },
+                            { title: ";o", img: "https://i.imgflip.com/1ur9b0.jpg" },
+                            { title: "I <3 you Virus", img: "https://scontent.fmnl9-5.fna.fbcdn.net/v/t1.15752-9/494817189_1001815105374449_3285398081138115644_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeGWkeyysqCMNglTUaJst7pfz2JHN23YZqXPYkc3bdhmpb7_dYHGYDZfwFun1GJs5J4haBDNyXdFhqMm-Km3nqRV&_nc_ohc=KXCinvvqxZwQ7kNvwGWDPRF&_nc_oc=AdmDa9NAEsr276YT7PkpifiPlL2sWNuw-7q33lnXuWJaRepwyuUgHvA2j-v5A7_Yj5o&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl9-5.fna&oh=03_Q7cD2QFHKrm4H5-2Kj6ksSJ2IL8ktM9JeP494zA6YTNqPlAQYg&oe=684532DD" },
+                            { title: "Sarap", img: "https://scontent.fmnl9-2.fna.fbcdn.net/v/t1.15752-9/494819295_1888530848588252_7850293586542648518_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeFxdYSMRlaL3mGm02eCDTxgRC3IlfKOWx1ELciV8o5bHQwJiACF4YUyPVQJK0hCZUqS9sZst41XBy7W3uk_Hhf-&_nc_ohc=NtXvQZBp-CsQ7kNvwFJFtZ2&_nc_oc=AdkRI5nCnkQuS35R4jXKtH8ry5espM7-wJ89YfhYEl3ZnlefDwNjD1uy5wd3KuqMC1U&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fmnl9-2.fna&oh=03_Q7cD2QGFQFOyXvwqQvsBMI8cMx4IqAn_5vtXyMLtDNoLKTZhAA&oe=684511E4" },
+                            { title: "Gagi Man", img: "https://scontent.fmnl8-4.fna.fbcdn.net/v/t1.15752-9/494817018_1192778788806774_7178043392178530496_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeFl9UOVFx5rYCj1lGTXoVdvzjPG0_-xcYLOM8bT_7Fxgpd483wSPN-NsNw-HKNMtSUoV1QylQE0JUDC1cG5A34K&_nc_ohc=yhr8oyycWQIQ7kNvwFEZ9tg&_nc_oc=AdmKPbPbBGDie7Dl4jM1mcqortZ4KbZPT44BCJUWsV2STfNUMpsj1bYkJ5cQ2C9vpPU&_nc_zt=23&_nc_ht=scontent.fmnl8-4.fna&oh=03_Q7cD2QHDEiajg10v_qYs3LlS-Y3nKieGp6ffOyQ8puYTIIPO_Q&oe=684500EB" },
+                            { title: ":P", img: "https://th.bing.com/th/id/OIP.r3-VrKSid2jQAxi4GXt0FwHaLW?cb=iwc1&rs=1&pid=ImgDetMain" },
+                            { title: "Quackk", img: "https://i.imgflip.com/1otk96.jpg" }
+                        ];
+                        document.write(memes.map(m => `
+              <div class="col-12 col-sm-6 col-lg-3">
+                <div class="product-card p-2">
+                  <div class="position-relative">
+                    <img src="${m.img}" alt="${m.title}" />
+                    <div class="view-details">View Details</div>
+                  </div>
+                  <div class="mt-2">
+                    <h6 class="text-primary">${m.title}</h6>
+                    <p class="mb-1">$29.99</p>
+                    <button class="btn btn-sm btn-primary">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            `).join(''));
+                    </script>
+
+                </div>
+
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">«</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                    </ul>
+                </nav>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>
